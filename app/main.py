@@ -1,24 +1,19 @@
 from fastapi import FastAPI
 from app.database import Base, engine
 from app.routers import inventory, dashboard
-
-Base.metadata.create_all(bind=engine)
-
-app = FastAPI(title="Pharmacy Backend")
-
-app.include_router(inventory.router)
-app.include_router(dashboard.router)
-@app.get("/")
-def root():
-    return {"message": "Pharmacy API running 🚀"}
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+# Create DB tables
+Base.metadata.create_all(bind=engine)
 
+# Create app ONLY ONCE
+app = FastAPI(title="Pharmacy Backend")
+
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://your-frontend.vercel.app",
+        "https://swasthiqfrontend06.vercel.app/",
         "https://your-frontend.netlify.app",
         "http://localhost:5173",
     ],
@@ -26,3 +21,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(inventory.router)
+app.include_router(dashboard.router)
+
+# Root route
+@app.get("/")
+def root():
+    return {"message": "Pharmacy API running 🚀"}
