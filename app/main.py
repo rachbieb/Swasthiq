@@ -13,7 +13,7 @@ app = FastAPI(title="Pharmacy Backend")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://swasthiqfrontend06.vercel.app/",
+        "https://swasthiq-frontend06.vercel.app/",
         "https://your-frontend.netlify.app",
         "http://localhost:5173",
     ],
