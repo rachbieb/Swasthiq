@@ -14,7 +14,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://swasthiq-frontend06.vercel.app/",
-        "https://your-frontend.netlify.app",
+        "https://swasthiq-frontend06-vcbg3uhc3-rachbiebs-projects.vercel.app",
         "http://localhost:5173",
     ],
     allow_credentials=True,
